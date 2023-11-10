@@ -24,4 +24,13 @@
 // console.log(a);
 // const a = 5;
 
- 
+let arr2 = [];
+
+for (let i = 0; i <= 100000; i += 2) {
+  if (i == 0) {
+    continue;
+  }
+  arr2.push(i);
+}
+
+console.log(arr2);
