@@ -21,19 +21,23 @@ const manageIngredient = (processName) => {
 
   return new Promise((res, rej) => {
     setTimeout(() => {
-      //   res({
-      //     customerName: prossName,
-      //     message: "Managin the ingredient for " + prossName,
-      //   });
-      rej(new Error("Sorry, do not manage completed order"));
+      res({
+        customerName: prossName,
+        message: "Managin the ingredient for " + prossName,
+      });
+      // rej(new Error("Sorry, do not manage completed order"));
     }, 1000);
   });
 };
 
 const processFood = (processName) => {
+  let prossName = "very " + processName;
   return new Promise((res) => {
     setTimeout(() => {
-      res("Processing the food for " + processName);
+      res({
+        customerName: prossName,
+        message: "Processing the food for " + prossName,
+      });
     }, 5000);
   });
 };
@@ -41,7 +45,9 @@ const processFood = (processName) => {
 const completeOrder = (processName) => {
   return new Promise((res) => {
     setTimeout(() => {
-      res("The order is complete, " + processName + " can goble it up");
+      res({
+        message: "The order is complete, " + processName + " can gobble it up",
+      });
     }, 500);
   });
 };
@@ -116,11 +122,11 @@ async function fast() {
     const manageStatur = await manageIngredient(orderStatus.customerName);
     console.log(manageStatur.message);
 
-    //   const processStatus = await processFood(manageStatur.customerName);
-    //   console.log(processStatus.customerName);
+    const processStatus = await processFood(manageStatur.customerName);
+    console.log(processStatus.message);
 
-    //   const completeStatus = await completeOrder(processStatus.customerName);
-    //   console.log(completeStatus);
+    const completeStatus = await completeOrder(processStatus.customerName);
+    console.log(completeStatus.message);
   } catch (error) {
     console.log(error.message);
   }
