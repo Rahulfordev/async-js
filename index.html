@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Posts from JSONPlaceholder API</h1>
+    <ul id="show-text"></ul>
+    <!-- <ul id="postList"></ul> -->
+    <script>
+      const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+      async function fetchData() {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        // Call a function to display the data in the HTML
+        displayData(data);
+      }
+
+      function displayData(posts) {
+        const postList = document.getElementById("show-text");
+
+        // Loop through the posts and create list items
+        posts.forEach((post) => {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.body}</p>
+        `;
+          postList.appendChild(listItem);
+        });
+      }
+      fetchData();
+    </script>
+  </body>
+</html>

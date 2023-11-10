@@ -16,3 +16,17 @@
 // trainTricket
 //   .then((res) => console.log(res))
 //   .catch((rej) => console.log(rej.message));
+
+// *** example
+
+let count = true;
+
+let getCont = new Promise((res, rej) => {
+  if (count) {
+    res("this is the countable value");
+  } else {
+    rej("count is not able value");
+  }
+});
+
+console.log(getCont);
